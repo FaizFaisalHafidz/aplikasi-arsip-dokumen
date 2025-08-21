@@ -1,0 +1,128 @@
+body {
+    font-family: Nunito, sans-serif;
+    font-size: 15px;
+    background-color: #e3ecf8;
+    color: #29343d;
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+    color: #29343d;
+}
+
+.page-wrapper {
+    position: relative
+}
+
+.card {
+    --bs-card-spacer-y: 1rem;
+    --bs-card-spacer-x: 1.75rem;
+    border-radius: 12px !important;
+    box-shadow: 2px 6px 15px 0 rgba(69, 65, 78, .1);
+    border: 0;
+}
+
+.auth-card {
+    max-width: 480px;
+    width: 100%;
+}
+
+.card .card-body {
+    padding: 1.75rem 2rem;
+    color: #29343d;
+}
+
+.login-title {
+    font-size: 21px;
+}
+
+.form-control {
+    color: #29343d !important;
+    border-color: #e0e6eb;
+    border-radius: 8px;
+}
+
+.form-control:focus {
+    border-color: #b1adff;
+    box-shadow: none;
+}
+
+.form-floating>.form-control {
+    padding: 1rem 1.1rem;
+}
+
+.form-floating>label {
+    color: #29343d;
+}
+
+.form-floating>label>i {
+    font-size: 18px;
+    margin-left: .25rem !important;
+    margin-right: .5rem !important;
+    vertical-align: middle;
+}
+
+.form-floating>label>span {
+    vertical-align: middle;
+}
+
+.btn {
+    padding: .75rem 1rem;
+    border-radius: 10px;
+}
+
+.btn-primary {
+    background: #635bff !important;
+    border-color: #635bff !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:disabled {
+    color: #ffffff !important;
+    background: #5249fe !important;
+    border-color: #5249fe !important;
+}
+
+.alert {
+    padding: 16px 18px;
+    border-radius: 12px;
+    color: #29343d !important;
+    box-shadow: none;
+}
+
+.alert-title {
+    margin-bottom: 40px;
+}
+
+.alert-success {
+    color: #36c76c !important;
+    background-color: #ebfaf0 !important;
+    border: 1px solid #cbf4da !important;
+    border-left: none;
+}
+
+.alert-danger {
+    color: #ff6692 !important;
+    background-color: #ffccdb !important;
+    border: 1px solid #ffc2d3 !important;
+    border-left: none;
+}
+
+.text-brand {
+    color: #ee5050 !important;
+}
+
+.border-start {
+    border-left: 1px solid #e0e6eb !important;
+}

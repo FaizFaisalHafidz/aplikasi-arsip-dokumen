@@ -1,0 +1,1 @@
+<img src="{{ auth()->user()->role == 'Admin' ? asset('images/avatar1.png') : asset('images/avatar-2.png') }}" alt="image profile" class="avatar-img rounded-circle">

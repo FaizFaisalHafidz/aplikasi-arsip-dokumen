@@ -1,0 +1,13 @@
+Menjalankan Migration 	=>   php artisan migrate
+
+Menjalankan Seeder 	=>   php artisan db:seed
+
+Menjalankan Aplikasi 	=>   php artisan serve
+
+Login			=>   Hak Akses = Admin
+                             Username : admin
+                             Password : admin
+
+                             Hak Akses = User
+                             Username : user
+                             Password : user
