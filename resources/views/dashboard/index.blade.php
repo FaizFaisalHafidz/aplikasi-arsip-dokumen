@@ -56,7 +56,7 @@
                             <div class="numbers">
                                 <p class="card-category">Akurasi Klasifikasi</p>
                                 {{-- tampilkan data --}}
-                                <h4 class="card-title">{{ $totalJenis }}</h4>
+                                <h4 class="card-title">{{ $totalJenis }}%</h4>
                             </div>
                         </div>
                     </div>
@@ -122,8 +122,8 @@
                             {{ $data->arsip_count }},
                         @endforeach
                     ],
-                    backgroundColor: 'rgba(99, 91, 255, 0.6)',
-                    hoverBackgroundColor: 'rgba(99, 91, 255, 1)',
+                    backgroundColor: 'rgba(40, 167, 69, 0.6)',
+                    hoverBackgroundColor: 'rgba(40, 167, 69, 1)',
                     borderWidth: 1,
                     borderSkipped: false
                 }]

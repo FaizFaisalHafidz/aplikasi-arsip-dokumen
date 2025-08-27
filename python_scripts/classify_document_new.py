@@ -93,16 +93,16 @@ def extract_document_info(text):
     
     return info
 
-# Kata kunci untuk setiap kategori
+# Kata kunci untuk setiap kategori berdasarkan dataset
 keywords_dict = {
-    'Administrasi': ['undangan', 'surat', 'rapat', 'izin', 'permohonan', 'administrasi', 'admin'],
-    'Akademik': ['jadwal', 'pelajaran', 'pembelajaran', 'guru', 'mengajar', 'akademik', 'belajar'],
-    'Evaluasi': ['penilaian', 'nilai', 'uji', 'kompetensi', 'evaluasi', 'test', 'ujian'],
-    'Kepegawaian': ['guru', 'karyawan', 'pegawai', 'hadir', 'jabatan', 'cuti', 'kepegawaian', 'staff'],
-    'Keuangan': ['laporan', 'keuangan', 'anggaran', 'bos', 'dana', 'gaji', 'finance', 'biaya'],
-    'Kurikulum': ['kurikulum', 'silabus', 'materi', 'modul', 'curriculum'],
-    'Sarana dan Prasarana': ['lab', 'inventaris', 'barang', 'fasilitas', 'alat', 'gedung', 'sarana', 'prasarana'],
-    'Siswa': ['siswa', 'lulus', 'kelulusan', 'ppdb', 'absensi', 'pendaftaran', 'student', 'murid']
+    'Administrasi': ['agenda kegiatan', 'proposal kegiatan', 'laporan hasil rapat', 'surat undangan rapat', 'daftar hadir rapat', 'undangan', 'rapat', 'permohonan'],
+    'Akademik': ['daftar mata pelajaran', 'jadwal ujian', 'laporan praktik', 'daftar guru pengajar', 'guru pengajar', 'jadwal', 'ujian', 'pembelajaran', 'mengajar', 'akademik', 'belajar', 'kelas', 'mata pelajaran', 'pengajar'],
+    'Evaluasi': ['rekap penilaian', 'rekap nilai', 'laporan hasil wawancara', 'laporan monitoring', 'penilaian', 'nilai', 'uji', 'kompetensi', 'evaluasi', 'test', 'monitoring'],
+    'Kepegawaian': ['data sertifikasi guru', 'rekap data guru', 'sk pengangkatan guru', 'sk pemberhentian', 'jadwal piket guru', 'notulen rapat guru', 'formulir cuti', 'laporan absensi pegawai', 'daftar hadir guru', 'absensi guru', 'hadir guru', 'piket guru', 'rapat guru', 'sertifikasi guru', 'pengangkatan guru', 'guru', 'karyawan', 'pegawai', 'jabatan', 'cuti', 'kepegawaian', 'staff', 'piket', 'sertifikasi', 'pengangkatan', 'absensi pegawai'],
+    'Keuangan': ['bukti penerimaan', 'laporan kas', 'laporan audit', 'rencana pengadaan barang', 'laporan', 'keuangan', 'anggaran', 'bos', 'dana', 'gaji', 'finance', 'biaya', 'kas', 'audit'],
+    'Kurikulum': ['bahan ajar', 'modul pembelajaran', 'rencana pengembangan kurikulum', 'kurikulum', 'silabus', 'materi', 'modul', 'curriculum', 'pengembangan'],
+    'Sarana dan Prasarana': ['rencana perbaikan gedung', 'daftar inventaris', 'daftar fasilitas', 'jadwal pemakaian lab', 'rekap barang masuk', 'laporan pengadaan alat', 'lab', 'inventaris', 'barang', 'fasilitas', 'alat', 'gedung', 'sarana', 'prasarana', 'perbaikan'],
+    'Siswa': ['laporan kegiatan ekstrakurikuler', 'laporan hasil konseling', 'kartu ujian siswa', 'siswa', 'lulus', 'kelulusan', 'ppdb', 'pendaftaran', 'student', 'murid', 'konseling', 'ekstrakurikuler']
 }
 
 def classify_document(text, filename):
@@ -110,12 +110,35 @@ def classify_document(text, filename):
     # Gabungkan teks PDF dan nama file untuk klasifikasi
     search_text = (text or '').lower() + ' ' + filename.lower()
     
+    # Periksa kombinasi kata yang menunjukkan kepegawaian dengan prioritas tinggi
+    kepegawaian_priority_patterns = [
+        'daftar hadir.*guru',
+        'absensi.*guru', 
+        'hadir.*guru',
+        'guru.*absen',
+        'guru.*hadir',
+        'rapat guru',
+        'piket guru',
+        'data.*guru',
+        'sk.*guru',
+        'sertifikasi guru',
+        'pegawai.*absen',
+        'pegawai.*hadir'
+    ]
+    
+    import re
+    for pattern in kepegawaian_priority_patterns:
+        if re.search(pattern, search_text):
+            return 'Kepegawaian'
+    
     scores = {}
     for category, keywords in keywords_dict.items():
         score = 0
         for keyword in keywords:
             if keyword.lower() in search_text:
-                score += 1
+                # Berikan skor berdasarkan panjang kata kunci (frasa yang lebih spesifik mendapat skor lebih tinggi)
+                word_count = len(keyword.split())
+                score += word_count * word_count  # Kuadratkan untuk memberikan prioritas lebih tinggi pada frasa panjang
         scores[category] = score
     
     # Ambil kategori dengan skor tertinggi
@@ -163,7 +186,7 @@ def main():
         result['tanggal_dokumen'] = None
         
         # Klasifikasi berdasarkan nama file
-        predicted_category = classify_document(None, filename)
+        predicted_category = classify_document(None, original_filename)
         result['predicted_category_id'] = predicted_category
         result['extraction_success'] = False
         result['message'] = "Gagal membaca konten PDF, menggunakan nama file untuk klasifikasi"

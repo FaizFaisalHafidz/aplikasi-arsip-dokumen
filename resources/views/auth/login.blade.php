@@ -12,7 +12,7 @@
     <title>Login - {{ config('app.name') }}</title>
 
     {{-- Favicon icon --}}
-    <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="https://neoflash.sgp1.cdn.digitaloceanspaces.com/logo-sirnamiskin.png" type="image/png">
 
     {{-- Bootstrap CSS --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -75,7 +75,7 @@
                             </div>
 
                             {{-- button login --}}
-                            <button type="submit" class="btn btn-primary w-100 mt-3 mb-5">LOGIN</button>
+                            <button type="submit" class="btn w-100 mt-3 mb-5" style="background-color: #28a745; border-color: #28a745; color: white;">LOGIN</button>
 
                             {{-- copyright --}}
                             <div class="text-center mb-2">

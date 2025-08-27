@@ -104,7 +104,7 @@ class ArsipController extends Controller
         // Jalankan script Python untuk klasifikasi dokumen
         $pythonScript = base_path('python_scripts/classify_document_new.py');
         $uploadedFilePath = storage_path('app/public/dokumen/' . $fileName);
-        $command = "/Users/flashcode/Downloads/aplikasi-pengarsipan-dokumen/python_env/bin/python $pythonScript '$uploadedFilePath' '$originalFileName'";
+        $command = "python3 $pythonScript '$uploadedFilePath' '$originalFileName'";
         $output = null;
         $result = null;
         
@@ -219,8 +219,8 @@ class ArsipController extends Controller
      */
     public function show(string $id): View
     {
-        // dapatkan data berdasarakan "id"
-        $arsip = Arsip::findOrFail($id);
+        // dapatkan data berdasarkan "id" dengan relasi jenis
+        $arsip = Arsip::with('jenis')->findOrFail($id);
 
         // tampilkan form detail data
         return view('arsip.show', compact('arsip'));
@@ -248,16 +248,16 @@ class ArsipController extends Controller
             'nama_dokumen'         => 'required',
             'nomor_dokumen'        => 'required|unique:arsip,nomor_surat,' . $id,
             'tanggal_dokumen'      => 'required|date',
-            'dokumen_elektronik' => 'file|mimes:pdf|max:5120'
+            'dokumen_elektronik'   => 'nullable|file|mimes:pdf|max:5120'
         ], [
             'nama_dokumen.required'      => 'Nama dokumen tidak boleh kosong.',
             'nomor_dokumen.required'     => 'Nomor dokumen tidak boleh kosong.',
             'nomor_dokumen.unique'       => 'Nomor dokumen sudah ada.',
             'tanggal_dokumen.required'   => 'Tanggal dokumen tidak boleh kosong.',
             'tanggal_dokumen.date'       => 'Tanggal dokumen harus berupa tanggal yang valid.',
-            'dokumen_elektronik.file'  => 'Dokumen elektronik harus berupa file.',
-            'dokumen_elektronik.mimes' => 'Dokumen elektronik harus berupa file dengan jenis: pdf.',
-            'dokumen_elektronik.max'   => 'Dokumen elektronik tidak boleh lebih besar dari 5 MB.'
+            'dokumen_elektronik.file'    => 'Dokumen elektronik harus berupa file.',
+            'dokumen_elektronik.mimes'   => 'Dokumen elektronik harus berupa file dengan jenis: pdf.',
+            'dokumen_elektronik.max'     => 'Dokumen elektronik tidak boleh lebih besar dari 5 MB.'
         ]);
 
         // dapatkan data berdasarakan "id"
@@ -275,13 +275,13 @@ class ArsipController extends Controller
             // Jalankan script Python untuk klasifikasi dokumen
             $pythonScript = base_path('python_scripts/classify_document_new.py');
             $uploadedFilePath = storage_path('app/public/dokumen/' . $fileName);
-            $command = "/Users/flashcode/Downloads/aplikasi-pengarsipan-dokumen/python_env/bin/python $pythonScript '$uploadedFilePath' '$originalFileName'";
+            $command = "python3 $pythonScript '$uploadedFilePath' '$originalFileName'";
             $output = null;
             $result = null;
             exec($command, $output, $result);
 
-            // Default jenis_id jika gagal klasifikasi
-            $jenis_id = $request->jenis; // fallback ke input user
+            // Default jenis_id jika gagal klasifikasi (gunakan jenis yang sudah ada)
+            $jenis_id = $arsip->jenis_id; // fallback ke jenis yang sudah ada
             if ($result === 0 && !empty($output)) {
                 $json = json_decode(implode('', $output), true);
                 if (isset($json['predicted_category_id'])) {
@@ -307,7 +307,7 @@ class ArsipController extends Controller
         }
         // jika "dokumen_elektronik" tidak diubah
         else {
-            // ubah data tanpa mengubah jenis (tetap gunakan jenis yang sudah ada)
+            // ubah data tanpa mengubah file dan jenis (tetap gunakan jenis yang sudah ada)
             $arsip->update([
                 'nama_surat'    => $request->nama_dokumen,
                 'nomor_surat'   => $request->nomor_dokumen,

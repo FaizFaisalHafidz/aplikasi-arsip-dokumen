@@ -53,7 +53,15 @@ html {
 .sidebar.sidebar-style-2 .nav .nav-item a:focus i,
 .sidebar.sidebar-style-2 .nav .nav-item a[data-toggle=collapse][aria-expanded=true] p,
 .sidebar.sidebar-style-2 .nav .nav-item a[data-toggle=collapse][aria-expanded=true] i {
-    color: #635bff !important;
+    color: #28a745 !important;
+}
+
+/* Additional specificity for sidebar hover */
+.sidebar.sidebar-style-2 .nav.nav-primary .nav-item a:hover p,
+.sidebar.sidebar-style-2 .nav.nav-primary .nav-item a:hover i,
+.sidebar.sidebar-style-2 .nav.nav-primary .nav-item a:focus p,
+.sidebar.sidebar-style-2 .nav.nav-primary .nav-item a:focus i {
+    color: #28a745 !important;
 }
 
 .sidebar.sidebar-style-2 .nav .nav-item a p {
@@ -66,8 +74,8 @@ html {
 }
 
 .sidebar.sidebar-style-2 .nav.nav-primary .nav-item .active {
-    background: #635bff !important;
-    box-shadow: 0 17px 20px -8px rgba(77, 91, 236, .231372549);
+    background: #28a745 !important;
+    box-shadow: 0 17px 20px -8px rgba(40, 167, 69, .231372549);
 }
 
 .sidebar.sidebar-style-2 .nav.nav-primary .nav-item .active p,
@@ -159,16 +167,16 @@ div.dropdown-item {
 }
 
 .btn-primary {
-    background: #635bff !important;
-    border-color: #635bff !important;
+    background: #28a745 !important;
+    border-color: #28a745 !important;
 }
 
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:disabled {
     color: #ffffff !important;
-    background: #5249fe !important;
-    border-color: #5249fe !important;
+    background: #1e7e34 !important;
+    border-color: #1e7e34 !important;
 }
 
 .btn-secondary {
@@ -209,16 +217,16 @@ div.dropdown-item {
 
 .text-primary,
 .text-primary a {
-    color: #635bff !important;
+    color: #28a745 !important;
 }
 
 .text-primary:hover,
 .text-primary a:hover {
-    color: #5249fe !important;
+    color: #1e7e34 !important;
 }
 
 .bg-primary-subtle {
-    background-color: #dddbff !important;
+    background-color: #d4edda !important;
 }
 
 .card {
@@ -246,7 +254,7 @@ div.dropdown-item {
 }
 
 .card-stats .icon-big.icon-primary {
-    background: #635bff;
+    background: #28a745;
 }
 
 .card-stats .icon-big.icon-success {
@@ -283,9 +291,9 @@ div.dropdown-item {
 }
 
 .alert-primary {
-    color: #635bff !important;
-    background-color: #dddbff !important;
-    border: 1px solid #c1bdff !important;
+    color: #28a745 !important;
+    background-color: #d4edda !important;
+    border: 1px solid #c3e6cb !important;
     border-left: none;
 }
 
@@ -380,8 +388,8 @@ label {
 .pagination>li:first-child>span:hover,
 .pagination>li:last-child>span:hover {
     color: #ffffff;
-    background-color: #635bff;
-    border-color: #635bff;
+    background-color: #28a745;
+    border-color: #28a745;
 }
 
 .page-item {
@@ -394,8 +402,8 @@ label {
 
 .page-link.active,
 .active>.page-link {
-    background-color: #635bff;
-    border-color: #635bff;
+    background-color: #28a745;
+    border-color: #28a745;
 }
 
 .page-link.disabled,
@@ -489,12 +497,12 @@ label {
 
 .flatpickr-day.week.selected {
     border-radius: 0;
-    -webkit-box-shadow: -5px 0 0 #b1adff, 5px 0 0 #b1adff;
-    box-shadow: -5px 0 0 #b1adff, 5px 0 0 #b1adff;
+    -webkit-box-shadow: -5px 0 0 #7cc97c, 5px 0 0 #7cc97c;
+    box-shadow: -5px 0 0 #7cc97c, 5px 0 0 #7cc97c;
 }
 
 .flatpickr-current-month .flatpickr-monthDropdown-months .flatpickr-monthDropdown-month:hover {
-    background: #b1adff !important;
+    background: #7cc97c !important;
 }
 
 select+.select2-container {

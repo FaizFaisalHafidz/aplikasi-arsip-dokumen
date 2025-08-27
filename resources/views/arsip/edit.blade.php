@@ -17,7 +17,7 @@
                     <div class="col-lg-6">
                         <div class="mb-3">
                             <label class="form-label">Nama Dokumen <span class="text-danger">*</span></label>
-                            <textarea name="nama_dokumen" rows="2" class="form-control @error('nama_dokumen') is-invalid @enderror" autocomplete="off">{{ old('nama_dokumen', $arsip->nama_dokumen) }}</textarea>
+                            <textarea name="nama_dokumen" rows="2" class="form-control @error('nama_dokumen') is-invalid @enderror" autocomplete="off">{{ old('nama_dokumen', $arsip->nama_surat) }}</textarea>
                             
                             {{-- pesan error untuk nama dokumen --}}
                             @error('nama_dokumen')
@@ -29,7 +29,7 @@
 
                         <div class="mb-3">
                             <label class="form-label">Nomor Dokumen<span class="text-danger">*</span></label>
-                            <input type="text" name="nomor_dokumen" class="form-control @error('nomor_dokumen') is-invalid @enderror" value="{{ old('nomor_dokumen', $arsip->nomor_dokumen) }}" autocomplete="off">
+                            <input type="text" name="nomor_dokumen" class="form-control @error('nomor_dokumen') is-invalid @enderror" value="{{ old('nomor_dokumen', $arsip->nomor_surat) }}" autocomplete="off">
                             
                             {{-- pesan error untuk nomor dokumen --}}
                             @error('nomor_dokumen')
@@ -41,7 +41,7 @@
 
                         <div class="mb-3">
                             <label class="form-label">Tanggal Dokumen <span class="text-danger">*</span></label>
-                            <input type="text" name="tanggal_dokumen" class="form-control datepicker @error('tanggal_dokumen') is-invalid @enderror" value="{{ old('tanggal_dokumen', $arsip->tanggal_dokumen) }}" autocomplete="off">
+                            <input type="text" name="tanggal_dokumen" class="form-control datepicker @error('tanggal_dokumen') is-invalid @enderror" value="{{ old('tanggal_dokumen', $arsip->tanggal_surat) }}" autocomplete="off">
                             
                             {{-- pesan error untuk tanggal dokumen --}}
                             @error('tanggal_dokumen')
