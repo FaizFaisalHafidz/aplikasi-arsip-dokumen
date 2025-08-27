@@ -36,7 +36,7 @@
             </div>
             {{-- tampilkan dokumen elektronik --}}
             <div class="pt-2">
-             <embed type="application/pdf" width="100%" height="700px" src="{{ asset('storage/dokumen/' . urlencode($arsip->dokumen_elektronik)) }}" class="border rounded">
+             <embed type="application/pdf" width="100%" height="700px" src="{{ asset('storage/dokumen/' . $arsip->dokumen_elektronik) }}" class="border rounded">
             </div>
             
             {{-- action buttons --}}
