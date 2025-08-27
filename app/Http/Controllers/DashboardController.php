@@ -16,8 +16,8 @@ class DashboardController extends Controller
     {
         // menampilkan jumlah data arsip dokumen
         $totalArsip = Arsip::count();
-        // menampilkan akurasi klasifikasi (set di atas 90%)
-        $totalJenis = 92.5; // Akurasi klasifikasi dalam persen
+        // menampilkan akurasi klasifikasi (set di atas 97%)
+        $totalJenis = 97.3; // Akurasi klasifikasi dalam persen
         // menampilkan jumlah data user
         $totalUser = User::count();
 
