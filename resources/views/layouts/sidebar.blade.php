@@ -9,15 +9,16 @@
     <div class="sidebar-wrapper scrollbar scrollbar-inner">
         <div class="sidebar-content">
             <ul class="nav nav-primary">
-                {{-- Menu Dashboard - hanya untuk Admin --}}
-                @if (auth()->user()->role === 'Admin')
-                    <li class="nav-item">
-                        <x-sidebar-link href="{{ route('dashboard.index') }}" :active="request()->routeIs('dashboard.index')">
-                            <i class="ti ti-layout-dashboard"></i>
-                            <p>Dashboard</p>
-                        </x-sidebar-link>
-                    </li>
+                {{-- Menu Dashboard - untuk semua role --}}
+                <li class="nav-item">
+                    <x-sidebar-link href="{{ route('dashboard.index') }}" :active="request()->routeIs('dashboard.index')">
+                        <i class="ti ti-layout-dashboard"></i>
+                        <p>Dashboard</p>
+                    </x-sidebar-link>
+                </li>
 
+                {{-- Menu Dokumen - hanya untuk Admin --}}
+                @if (auth()->user()->role === 'Admin')
                     <li class="nav-section">
                         <span class="sidebar-mini-icon">
                             <i class="ti ti-dots fs-5"></i>

@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot:title>Klasifikasi</x-slot:title>
-    <x-slot:breadcrumb>Klasifikasi</x-slot:breadcrumb>
+    {{-- <x-slot:breadcrumb>Klasifikasi</x-slot:breadcrumb> --}}
 
     <div class="card">
         <div class="card-body">

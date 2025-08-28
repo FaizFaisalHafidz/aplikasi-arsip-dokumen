@@ -61,7 +61,7 @@
             <div class="container">
                 <div class="page-inner">
                     {{-- Page Title --}}
-                    @if (!(request()->routeIs('dashboard.index') && auth()->user()->role !== 'Admin'))
+                    {{-- @if (!(request()->routeIs('dashboard.index') && auth()->user()->role !== 'Admin')) --}}
                     <div class="card card-body">
                         <div class="row align-items-center">
                             <div class="col-12">
@@ -102,7 +102,7 @@
                             </div>
                         </div>
                     </div>
-                    @endif
+                    {{-- @endif --}}
 
                     {{-- Content --}}
                     {{ $slot }}
