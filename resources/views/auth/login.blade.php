@@ -22,7 +22,21 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     {{-- Page CSS --}}
-    <link rel="stylesheet" href="{{ asset('css/page-auth.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/page-auth.css') }}?v={{ time() }}">
+    
+    {{-- Force CSS for background --}}
+    <style>
+        body {
+            background: linear-gradient(135deg, #2d6e3e 0%, #28a745 25%, #20c997 75%, #17a2b8 100%) !important;
+            background-attachment: fixed !important;
+            min-height: 100vh !important;
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+        }
+    </style>
 </head>
 
 <body>
