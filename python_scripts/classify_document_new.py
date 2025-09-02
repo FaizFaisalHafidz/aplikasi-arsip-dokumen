@@ -126,7 +126,26 @@ def classify_document(text, filename):
         'pegawai.*hadir'
     ]
     
+    # Periksa kombinasi kata yang menunjukkan kurikulum dengan prioritas tinggi
+    kurikulum_priority_patterns = [
+        'silabus.*pembelajaran',
+        'silabus.*pelajaran',
+        'silabus.*mata.*pelajaran',
+        'silabus.*kurikulum',
+        'rencana.*pembelajaran',
+        'rpp.*pembelajaran',
+        'modul.*pembelajaran',
+        'bahan.*ajar'
+    ]
+    
     import re
+    
+    # Cek pola kurikulum terlebih dahulu
+    for pattern in kurikulum_priority_patterns:
+        if re.search(pattern, search_text):
+            return 'Kurikulum'
+    
+    # Kemudian cek pola kepegawaian        
     for pattern in kepegawaian_priority_patterns:
         if re.search(pattern, search_text):
             return 'Kepegawaian'

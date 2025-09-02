@@ -33,17 +33,17 @@
                     </li>
                 @endif
 
-                {{-- Menu Klasifikasi - untuk semua role --}}
+                {{-- Menu Clustering - untuk semua role --}}
                 <li class="nav-section">
                     <span class="sidebar-mini-icon">
                         <i class="ti ti-dots fs-5"></i>
                     </span>
-                    <h4 class="text-section">Klasifikasi</h4>
+                    <h4 class="text-section">Clustering</h4>
                 </li>
                 <li class="nav-item">
                     <x-sidebar-link href="{{ route('laporan.index') }}" :active="request()->routeIs('laporan.*')">
                         <i class="ti ti-file-text"></i>
-                        <p>Klasifikasi</p>
+                        <p>Clustering</p>
                     </x-sidebar-link>
                 </li>
 

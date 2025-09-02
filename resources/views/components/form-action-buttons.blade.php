@@ -2,9 +2,15 @@
     <div class="d-grid gap-3 d-sm-flex justify-content-md-start pt-1">
         @if (request()->routeIs($slot . '.show'))
             {{-- button kembali ke halaman index --}}
-            <a href="{{ route($slot . '.index') }}" class="btn btn-primary px-4">
-                <i class="ti ti-arrow-left me-2"></i> Kembali
-            </a>
+            @if(request()->get('from') == 'clustering')
+                <a href="{{ route('laporan.index') }}" class="btn btn-primary px-4">
+                    <i class="ti ti-arrow-left me-2"></i> Kembali
+                </a>
+            @else
+                <a href="{{ route($slot . '.index') }}" class="btn btn-primary px-4">
+                    <i class="ti ti-arrow-left me-2"></i> Kembali
+                </a>
+            @endif
         @elseif (request()->routeIs($slot . '.index') || request()->routeIs($slot . '.filter'))
             {{-- button tampil data laporan --}}
             <button type="submit" class="btn btn-primary px-4">

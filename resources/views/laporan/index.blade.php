@@ -1,6 +1,6 @@
 <x-app-layout>
-    <x-slot:title>Klasifikasi</x-slot:title>
-    {{-- <x-slot:breadcrumb>Klasifikasi</x-slot:breadcrumb> --}}
+    <x-slot:title>Clustering</x-slot:title>
+    {{-- <x-slot:breadcrumb>Clustering</x-slot:breadcrumb> --}}
 
     <div class="card">
         <div class="card-body">
@@ -110,7 +110,7 @@
                                 <td width="120">{{ $data->jenis->nama }}</td>
                                 <td width="100">
                                     {{-- button form detail data --}}
-                                    <a href="{{ route('arsip.show', $data->id) }}" class="btn btn-warning btn-sm m-1" data-bs-tooltip="tooltip" data-bs-title="Detail">
+                                    <a href="{{ route('arsip.show', ['id' => $data->id, 'from' => 'clustering']) }}" class="btn btn-warning btn-sm m-1" data-bs-tooltip="tooltip" data-bs-title="Detail">
                                         <i class="ti ti-list"></i>
                                     </a>
                                 </td>

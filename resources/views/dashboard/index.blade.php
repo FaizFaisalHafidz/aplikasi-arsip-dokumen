@@ -54,9 +54,9 @@
                         </div>
                         <div class="col col-stats ms-3 ms-sm-0">
                             <div class="numbers">
-                                <p class="card-category">Akurasi Klasifikasi</p>
+                                <p class="card-category">Cluster</p>
                                 {{-- tampilkan data --}}
-                                <h4 class="card-title">{{ $totalJenis }}%</h4>
+                                <h4 class="card-title">8</h4>
                             </div>
                         </div>
                     </div>
